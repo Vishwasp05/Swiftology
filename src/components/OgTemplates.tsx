@@ -1,7 +1,8 @@
 import fs from "node:fs";
 
-const image = fs.readFileSync("./src/content/images/simonliang.jpg");
-const imageDataUrl = `data:image/jpeg;base64,${image.toString("base64")}`;
+import { SITE_TITLE } from "@/consts";
+const image = fs.readFileSync("./public/astro.png");
+const imageDataUrl = `data:image/png;base64,${image.toString("base64")}`;
 
 export function HomeOgTemplate() {
   return (
@@ -26,11 +27,11 @@ export function HomeOgTemplate() {
     >
       <img
         style={{ borderRadius: "12px" }}
-        src="https://www.divby0.io/simonliang.jpg"
+        src={imageDataUrl}
         width="192"
         height="192"
       />
-      <div>Simon Liang</div>
+      <div>{SITE_TITLE}</div>
     </div>
   );
 }
@@ -69,11 +70,10 @@ export function PostOgTemplate({ title }: { title: string }) {
         <img
           style={{ borderRadius: "12px" }}
           src={imageDataUrl}
-          // src="https://www.divby0.io/simonliang.jpg"
           width="128"
           height="128"
         />
-        <div>Simon Liang</div>
+        <div>{SITE_TITLE}</div>
       </div>
       <div
         style={{
